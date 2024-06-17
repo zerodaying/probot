@@ -3,9 +3,14 @@ module.exports = (req, res) => {
         const { message } = req.body;
         const botReply = `You said: ${message}`;
 
-        // Emit the reply to all clients using a WebSocket (if implemented)
-        // Example:
-        // io.emit('receiveMessage', { sender: 'Bot', message: botReply });
+        // Use environment variables
+        const apiKey = process.env.API_KEY;
+        const webhookUrl = process.env.WEBHOOK_URL;
+        const botId = process.env.BOT_ID;
+
+        console.log(`API Key: ${apiKey}`);
+        console.log(`Webhook URL: ${webhookUrl}`);
+        console.log(`Bot ID: ${botId}`);
 
         res.status(200).json({ reply: botReply });
     } else {
